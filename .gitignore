@@ -3,3 +3,4 @@
 *.Identifier
 *.txt
 cmake-build-debug
+*.bin

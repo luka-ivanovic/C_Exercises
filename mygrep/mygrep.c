@@ -37,7 +37,7 @@ int parseArgs(int argc, char **argv) {
                 I_FLAG = 1;
                 break;
             case 'o':
-                OUTFILE = fopen(optarg, "a");
+                OUTFILE = fopen(optarg, "w");
                 if (OUTFILE == NULL) {
                     perror(optarg);
                     goto fail;
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
             FILE *fp = fopen(argv[i], "r");
             if (!fp) {
                 perror(argv[i]);
-                continue;
+                return EXIT_FAILURE;
             }
             strLookup(KEYWORD, fp);
             fclose(fp);
