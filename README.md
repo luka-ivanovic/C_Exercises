@@ -2,7 +2,7 @@
 
 This repository contains some exercises from university coursework focused on learning C.  
 
-##mygrep
+## mygrep
 
 Simple [grep](https://en.wikipedia.org/wiki/Grep) clone 
 
