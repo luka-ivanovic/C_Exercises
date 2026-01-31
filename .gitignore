@@ -1,0 +1,5 @@
+.idea
+*.pdf
+*.Identifier
+*.txt
+cmake-build-debug
