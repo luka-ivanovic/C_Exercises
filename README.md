@@ -8,7 +8,7 @@ This repository contains some exercises from university coursework focused on le
 
 ## mygrep
 
-Simple [grep](https://en.wikipedia.org/wiki/Grep) clone 
+Simple [grep](https://en.wikipedia.org/wiki/Grep) clone.
 
 ## 3coloring (Work in Progress)
 A simple client–server system that communicates via shared memory.
