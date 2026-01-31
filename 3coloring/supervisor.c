@@ -2,10 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <semaphore.h>
 #include "common.h"
 
 unsigned limit = 0;
 unsigned delay = 0;
+sem_t *semFree;
+sem_t *semUsed;
+sem_t *semGenerator;
 
 void printUsage(void);
 int parseArgs(int argc, char **argv);
@@ -15,7 +21,11 @@ int main(int argc, char **argv) {
     if (parseArgs(argc, argv) == EXIT_FAILURE) {
         return EXIT_FAILURE;
     }
-    return 0;
+    if (setUpCircBuf() == EXIT_FAILURE) {
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
 
 void printUsage(void) {
@@ -46,4 +56,40 @@ int parseArgs(int argc, char **argv) {
         }
     }
     return EXIT_SUCCESS;
+}
+
+int setUpCircBuf(void) {
+    semFree = sem_open(SEM_NAME_FREE, O_CREAT |O_EXCL, SEM_MODE, MAX_CIRC_BUF_MEM);
+    if (semFree == SEM_FAILED) {
+        perror("Failed to create semaphore");
+        goto fail;
+    }
+
+    semUsed = sem_open(SEM_NAME_USED, O_CREAT |O_EXCL, SEM_MODE, 0);
+    if (semUsed == SEM_FAILED) {
+        perror("Failed to create semaphore");
+        goto fail;
+    }
+
+    semGenerator = sem_open(SEM_NAME_GENERATOR, O_CREAT |O_EXCL, SEM_MODE, 1);
+    if (semGenerator == SEM_FAILED) {
+        perror("Failed to create semaphore");
+        goto fail;
+    }
+    return EXIT_SUCCESS;
+
+    fail:
+      if (semUsed != SEM_FAILED) {
+          sem_close(semUsed);
+          sem_unlink(SEM_NAME_USED);
+      }
+      if (semGenerator != SEM_FAILED) {
+        sem_close(semGenerator);
+        sem_unlink(SEM_NAME_GENERATOR);
+      }
+      if (semFree != SEM_FAILED) {
+        sem_close(semFree);
+        sem_unlink(SEM_NAME_FREE);
+      }
+      return EXIT_FAILURE;
 }
