@@ -10,6 +10,6 @@ This repository contains some exercises from university coursework focused on le
 
 Simple [grep](https://en.wikipedia.org/wiki/Grep) clone 
 
-## 3coloring
+## 3coloring (Work in Progress)
 A simple client–server system that communicates via shared memory.
 The client computes candidate 3-colorings of a graph, and the server verifies whether they are valid.
