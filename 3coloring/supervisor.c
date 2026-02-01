@@ -6,16 +6,13 @@
 #include <sys/stat.h>
 #include <semaphore.h>
 #include "common.h"
+#include "supervisor.h"
 
 unsigned limit = 0;
 unsigned delay = 0;
 sem_t *semFree;
 sem_t *semUsed;
 sem_t *semGenerator;
-
-void printUsage(void);
-int parseArgs(int argc, char **argv);
-int setUpCircBuf(void);
 
 int main(int argc, char **argv) {
     if (parseArgs(argc, argv) == EXIT_FAILURE) {
