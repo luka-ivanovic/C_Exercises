@@ -2,9 +2,10 @@
 #define C_EXERCISES_CIRC_BUF_H
 
 struct circ_buf {
-    graph_t buffer[MAX_GRAPH_COUNT];
+    size_t edgeCount;
     size_t readHead;
     size_t writeHead;
+    edge_t *buffer[];
 };
 
 graph_t *writeToBuf();
