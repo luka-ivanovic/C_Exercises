@@ -6,8 +6,8 @@ static const char *SEM_NAME_FREE = "SEM_NAME_FREE";
 static const char *SEM_NAME_GENERATOR = "SEM_NAME_GENERATOR";
 static const char *SHM_NAME = "SHM_NAME";
 static const mode_t SEM_MODE = 0666;
+static const size_t SHM_SIZE = 4096;
 
-static const int MAX_CIRC_BUF_MEM = 4096;
 enum color {COLOR_RED, COLOR_GREEN, COLOR_BLUE};
 
 typedef struct {
@@ -27,5 +27,7 @@ typedef struct {
     size_t n_edges;
     edge_t **edges;
 }graph_t;
+
+static const size_t MAX_GRAPH_COUNT = SHM_SIZE / sizeof(graph_t);
 
 #endif

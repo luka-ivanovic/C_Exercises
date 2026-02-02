@@ -9,7 +9,6 @@
 #include "common.h"
 #include "supervisor.h"
 
-
 int main(int argc, char **argv) {
 
     unsigned long  limit = 0;
@@ -27,7 +26,7 @@ int main(int argc, char **argv) {
     if (setUpCircBuf(&allSems) == EXIT_FAILURE) {
         return EXIT_FAILURE;
     }
-    if (limit > 0) boolean = 1;
+    if (limit == 0) boolean = 1;
     while (boolean || limit > 0) {
         //read from shm
         sem_wait(allSems.semUsed);
