@@ -8,7 +8,7 @@ static const char *SHM_NAME = "SHM_NAME";
 static const mode_t SEM_MODE = 0666;
 static const size_t SHM_SIZE = 4096;
 
-enum color {COLOR_RED, COLOR_GREEN, COLOR_BLUE};
+enum color {COLOR_BLANK, COLOR_RED, COLOR_GREEN, COLOR_BLUE};
 
 typedef struct {
     char name;

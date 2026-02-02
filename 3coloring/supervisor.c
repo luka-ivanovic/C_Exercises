@@ -72,7 +72,7 @@ int parseArgs(int argc, char **argv, unsigned long *limit, unsigned long *delay)
 }
 
 int setUpCircBuf(sems_t *allSems) {
-    allSems->semFree = sem_open(SEM_NAME_FREE, O_CREAT | O_EXCL, SEM_MODE, MAX_CIRC_BUF_MEM);
+    allSems->semFree = sem_open(SEM_NAME_FREE, O_CREAT | O_EXCL, SEM_MODE, MAX_GRAPH_COUNT);
     if (allSems->semFree == SEM_FAILED) {
         perror("Failed to create semaphore");
         goto fail;
