@@ -12,7 +12,7 @@ Simple [grep](https://en.wikipedia.org/wiki/Grep) clone.
 
 ## 3coloring 
 A simple client–server system that communicates via shared memory.
-The client computes candidate 3-colorings of a graph, and the server verifies whether they are valid.
+The client computes candidate [3-colorings](https://en.wikipedia.org/wiki/Graph_coloring) of a graph, and the server verifies whether they are valid.
 
 ## forksort (Work in Progress) 
 Program to recursively sort a string using pipes and the fork/exec system calls.
